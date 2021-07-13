@@ -6,6 +6,8 @@ export const topHeadlines = async () => {
   let response = await apiNews.get(
     `/top-headlines?country=us&apiKey=${API_KEY}`
   )
-  console.log(response.data)
-  return response.data.articles
+  const result = response.data.articles.slice(0, 9).map(item => {
+    return item
+  })
+  return result
 }

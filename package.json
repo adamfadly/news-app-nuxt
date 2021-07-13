@@ -5,13 +5,13 @@
   "author": "adam fadly",
   "private": true,
   "scripts": {
-    "serve": "nuxt",
+    "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.7",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0"
   },

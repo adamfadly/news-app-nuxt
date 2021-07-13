@@ -19,12 +19,12 @@ export default {
       articles: []
     }
   },
-  // async fetch() {
-  //   return await topHeadlines()
-  // }
-  async mounted() {
-    this.articles = await topHeadlines()
+  async fetch() {
+    return (this.articles = await topHeadlines())
   }
+  // async mounted() {
+  //   this.articles = await topHeadlines()
+  // }
   // created() {
   //   topHeadlines()
   // }
