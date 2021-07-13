@@ -4,7 +4,7 @@
     <div class="max-w-sm rounded overflow-hidden shadow-lg">
       <img class="w-full" :src="news.urlToImage" alt="Mountain" />
       <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2 mb-8">{{ news.title }}</div>
+        <div class="font-bold text-xl mb-2">{{ news.title }}</div>
         <p class="text-gray-700 text-base ">
           {{ news.content }}
         </p>
