@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Card from '../components/News/Card.vue'
-import { topHeadlines } from '../services/news.services'
+import Card from '~/components/News/Card.vue'
+import { topHeadlines } from '~/services/news.services'
 
 export default {
   components: { Card },
