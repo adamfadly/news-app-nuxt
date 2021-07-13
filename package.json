@@ -5,7 +5,7 @@
   "author": "adam fadly",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "serve": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
