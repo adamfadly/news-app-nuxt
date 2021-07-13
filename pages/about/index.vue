@@ -1,11 +1,14 @@
 <template>
   <div>
-    <h1>this is about page</h1>
+    <about-main></about-main>
   </div>
 </template>
 
 <script>
-export default {}
+import AboutMain from '../../components/views/About/AboutMain.vue'
+export default {
+  components: { AboutMain }
+}
 </script>
 
 <style lang="scss" scoped></style>
