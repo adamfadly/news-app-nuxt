@@ -1,11 +1,14 @@
 <template>
   <div>
-    <h1>Contacts</h1>
+    <contacts-main></contacts-main>
   </div>
 </template>
 
 <script>
-export default {}
+import ContactsMain from '../../components/views/Contact/ContactMain.vue'
+export default {
+  components: { ContactsMain }
+}
 </script>
 
 <style lang="scss" scoped></style>
