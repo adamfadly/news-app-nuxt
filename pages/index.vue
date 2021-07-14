@@ -14,13 +14,8 @@ import { topHeadlines } from '../services/news.services'
 
 export default {
   components: { Card },
-  data() {
-    return {
-      articles: []
-    }
-  },
-  async fetch() {
-    return (this.articles = await topHeadlines())
+  async asyncData() {
+    return { articles: await topHeadlines() }
   }
 }
 </script>

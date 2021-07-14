@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center align-center">
     <about-header></about-header>
-    <about-body></about-body>
+    <about-body :news="news"></about-body>
     <about-footer></about-footer>
   </div>
 </template>
@@ -12,7 +12,13 @@ import AboutFooter from './components/AboutFooter.vue'
 import AboutHeader from './components/AboutHeader.vue'
 
 export default {
-  components: { AboutBody, AboutHeader, AboutFooter }
+  components: { AboutBody, AboutHeader, AboutFooter },
+  props: {
+    news: {
+      type: Array,
+      default: () => []
+    }
+  }
 }
 </script>
 

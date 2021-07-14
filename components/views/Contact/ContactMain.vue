@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>
-      {{ user }}
       <app-control-input v-model="user.name">Name</app-control-input>
       <app-control-input v-model="user.email">Email</app-control-input>
       <app-control-input v-model="user.address" control-type="textarea">
@@ -18,13 +17,21 @@ import AppControlInput from '../../Forms/AppControlInput.vue'
 import AppButton from '../../UI/AppButton/AppButton.vue'
 export default {
   components: { AppControlInput, AppButton },
+  props: {
+    userInput: {
+      type: Object,
+      required: false
+    }
+  },
   data() {
     return {
-      user: {
-        name: '',
-        email: '',
-        address: ''
-      }
+      user: this.userInput
+        ? { ...this.userInput }
+        : {
+            name: '',
+            email: '',
+            address: ''
+          }
     }
   },
   methods: {
