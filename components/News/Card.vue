@@ -1,6 +1,5 @@
 <template>
   <div class="p-10">
-    <!--Card 1-->
     <div class="max-w-sm rounded overflow-hidden shadow-lg">
       <img class="w-full" :src="news.urlToImage" alt="Mountain" />
       <div class="px-6 py-4">
@@ -37,5 +36,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped></style>

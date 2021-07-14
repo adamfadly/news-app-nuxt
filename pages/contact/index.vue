@@ -1,13 +1,22 @@
 <template>
   <div>
-    <contacts-main></contacts-main>
+    <contacts-main :userInput="user"></contacts-main>
   </div>
 </template>
 
 <script>
 import ContactsMain from '../../components/views/Contact/ContactMain.vue'
 export default {
-  components: { ContactsMain }
+  components: { ContactsMain },
+  data() {
+    return {
+      user: {
+        name: 'Adam',
+        email: 'adamfaada@galefg.com',
+        address: 'jl Saleh  no 14'
+      }
+    }
+  }
 }
 </script>
 

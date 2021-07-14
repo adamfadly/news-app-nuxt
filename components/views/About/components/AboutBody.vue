@@ -1,26 +1,18 @@
 <template>
   <div class="flex flex-wrap">
-    <card
-      v-for="(article, index) in articles"
-      :key="index"
-      :news="article"
-    ></card>
+    <card v-for="(article, index) in news" :key="index" :news="article"></card>
   </div>
 </template>
 
 <script>
 import Card from '~/components/News/Card.vue'
-import { topHeadlines } from '~/services/news.services'
-
 export default {
   components: { Card },
-  data() {
-    return {
-      articles: []
+  props: {
+    news: {
+      type: Array,
+      default: () => []
     }
-  },
-  async fetch() {
-    return (this.articles = await topHeadlines())
   }
 }
 </script>
