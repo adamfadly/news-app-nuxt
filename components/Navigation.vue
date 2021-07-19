@@ -20,6 +20,11 @@
           Contact
         </nuxt-link>
       </li>
+      <li class="px-2">
+        <nuxt-link to="/admin">
+          Admin
+        </nuxt-link>
+      </li>
     </ul>
   </div>
 </template>
