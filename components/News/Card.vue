@@ -1,11 +1,11 @@
 <template>
   <div class="p-10">
     <div class="max-w-sm rounded overflow-hidden shadow-lg">
-      <img class="w-full" :src="news.urlToImage" alt="Mountain" />
+      <img class="w-full" :src="news.thumbnail" :alt="news.title" />
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{{ news.title }}</div>
         <p class="text-gray-700 text-base ">
-          {{ news.content }}
+          {{ news.description }}
         </p>
       </div>
       <div class="px-6 pt-4 pb-2">

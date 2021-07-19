@@ -10,12 +10,13 @@
 
 <script>
 import Card from '../components/News/Card.vue'
-import { topHeadlines } from '../services/news.services'
 
 export default {
   components: { Card },
-  async asyncData() {
-    return { articles: await topHeadlines() }
+  computed: {
+    articles() {
+      return this.$store.state.news
+    }
   }
 }
 </script>
