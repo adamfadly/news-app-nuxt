@@ -1,6 +1,6 @@
 <template>
   <div>
-    <admin-main @submit="submitPost"> </admin-main>
+    <admin-main :articleData="news" @submit="submitPost"> </admin-main>
   </div>
 </template>
 
@@ -12,8 +12,12 @@ export default {
   components: {
     AdminMain
   },
+  data() {
+    return {
+      news: {}
+    }
+  },
   methods: {
-    // ...mapAction("store", []),
     submitPost(postData) {
       console.log(postData, 'parent')
       axios
@@ -21,9 +25,12 @@ export default {
           'https://news-app-nuxt-80b8e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json',
           postData
         )
-        .then(result => console.log(result))
+        .then(this.$router.push('/'))
         .catch(error => console.log(error))
     }
+  },
+  created() {
+    console.log(this.$route.query.id)
   }
 }
 </script>

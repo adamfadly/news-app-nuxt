@@ -1,5 +1,6 @@
 <template>
   <div>
+    yoloo
     <div>
       <app-control-input v-model="news.title">Title</app-control-input>
       <app-control-input v-model="news.author">Author</app-control-input>
@@ -18,8 +19,9 @@
 </template>
 
 <script>
-import AppControlInput from '../../Forms/AppControlInput.vue'
-import AppButton from '../../UI/AppButton/AppButton.vue'
+import AppControlInput from '../../../Forms/AppControlInput.vue'
+import AppButton from '../../../UI/AppButton/AppButton.vue'
+import axios from 'axios'
 
 export default {
   components: { AppControlInput, AppButton },
@@ -51,6 +53,20 @@ export default {
     onCancel() {
       this.news = { title: '', author: '', thumbnail: '', description: '' }
     }
+  },
+  async fetch() {
+    const id = this.$route.params.edit
+    console.log(typeof id, 'ada')
+    await axios
+      .get(
+        'https://news-app-nuxt-80b8e-default-rtdb.asia-southeast1.firebasedatabase.app/posts/' +
+          id +
+          '.json'
+      )
+      .then(response => {
+        this.news = response.data
+      })
+      .catch(e => console.log(e))
   }
 }
 </script>
