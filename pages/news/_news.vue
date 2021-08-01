@@ -6,7 +6,14 @@
       <div class="pt-10 px-10">
         {{ news.description }}
       </div>
+      <button
+        @click="onEditArticle"
+        class="bg-indigo-800 text-white p-4 rounded mt-5"
+      >
+        Edit This Article
+      </button>
     </div>
+    <div></div>
   </div>
 </template>
 
@@ -16,6 +23,12 @@ export default {
   data() {
     return {
       news: {}
+    }
+  },
+  methods: {
+    onEditArticle() {
+      const id = this.$route.params.news
+      this.$router.push('/admin/edit/' + id)
     }
   },
 
@@ -34,5 +47,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped></style>
