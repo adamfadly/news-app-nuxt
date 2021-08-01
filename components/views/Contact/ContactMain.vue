@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import AppControlInput from '../../Forms/AppControlInput.vue'
-import AppButton from '../../UI/AppButton/AppButton.vue'
+// import AppControlInput from '../../Forms/AppControlInput.vue'
+// import AppButton from '../../UI/AppButton/AppButton.vue'
 export default {
-  components: { AppControlInput, AppButton },
+  // components: { AppControlInput, AppButton },
   props: {
     userInput: {
       type: Object,

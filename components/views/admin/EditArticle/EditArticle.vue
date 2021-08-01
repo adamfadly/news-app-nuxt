@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import AppControlInput from '../../../Forms/AppControlInput.vue'
-import AppButton from '../../../UI/AppButton/AppButton.vue'
+// import AppControlInput from '../../../Forms/AppControlInput.vue'
+// import AppButton from '../../../UI/AppButton/AppButton.vue'
 import axios from 'axios'
 
 export default {
-  components: { AppControlInput, AppButton },
+  // components: { AppControlInput, AppButton },
   props: {
     articleData: {
       type: Object,
