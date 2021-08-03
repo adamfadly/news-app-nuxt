@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="flex flex-col items-center justify-center">
+      {{ news.publishAt }}
       <div class="font-bold text-4xl">{{ news.title }}</div>
       <img class="w-full px-40 mt-10" :src="news.thumbnail" :alt="news.title" />
       <div class="pt-10 px-10">

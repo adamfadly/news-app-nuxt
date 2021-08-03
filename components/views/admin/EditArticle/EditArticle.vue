@@ -37,7 +37,8 @@ export default {
         title: '',
         author: '',
         thumbnail: '',
-        description: ''
+        description: '',
+        publishAt: new Date()
       }
     }
   },
@@ -65,6 +66,7 @@ export default {
       )
       .then(response => {
         this.news = response.data
+        console.log(response.data, 'muncul')
       })
       .catch(e => console.log(e))
   }
