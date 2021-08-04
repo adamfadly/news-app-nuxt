@@ -5,6 +5,9 @@
         <img class="w-full" :src="news.thumbnail" :alt="news.title" />
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2">{{ news.title }}</div>
+          <div class="font-bold text-xl mb-2">
+            {{ news.publishAt | date }}
+          </div>
           <p class="text-gray-700 text-base ">
             {{ news.description }}
           </p>

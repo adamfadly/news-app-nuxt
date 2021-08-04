@@ -35,7 +35,8 @@ export default {
         title: '',
         author: '',
         thumbnail: '',
-        description: ''
+        description: '',
+        publishAt: new Date()
       }
     }
   },
