@@ -17,6 +17,10 @@ export default {
     articles() {
       return this.$store.state.news
     }
+  },
+
+  created() {
+    console.log(process.env.BASE_URL)
   }
 }
 </script>
