@@ -12,6 +12,7 @@ export default {
   components: {
     AdminMain
   },
+  middleware: 'device',
   data() {
     return {
       news: {}
@@ -19,7 +20,6 @@ export default {
   },
   methods: {
     submitPost(postData) {
-      console.log(postData, 'parent')
       axios
         .post(
           'https://news-app-nuxt-80b8e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json',
@@ -28,9 +28,6 @@ export default {
         .then(this.$router.push('/'))
         .catch(error => console.log(error))
     }
-  },
-  created() {
-    console.log(this.$route.query.id)
   }
 }
 </script>

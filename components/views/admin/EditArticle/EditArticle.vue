@@ -66,7 +66,6 @@ export default {
       )
       .then(response => {
         this.news = response.data
-        console.log(response.data, 'muncul')
       })
       .catch(e => console.log(e))
   }
