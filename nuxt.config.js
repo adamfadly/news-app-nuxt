@@ -51,8 +51,12 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: "https://news-app-nuxt-80b8e-default-rtdb.asia-southeast1.firebasedatabase.app",
-    credentials : false
+    baseURL:
+      'https://news-app-nuxt-80b8e-default-rtdb.asia-southeast1.firebasedatabase.app',
+    credentials: false
+  },
+  env: {
+    fbApiKEY: 'AIzaSyCfzCBpElomcioKR9y08_sQNWvgg7_br4c'
   },
   /*
    ** Build configuration
