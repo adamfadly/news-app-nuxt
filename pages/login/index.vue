@@ -18,14 +18,14 @@
         </svg>
       </div>
       <h2 class="text-4xl tracking-tight">
-        Sign in into your account
+        {{ signIn ? 'Sign in into your account' : 'Register Now' }}
       </h2>
-      <span class="text-sm"
-        >or
-        <a href="#" class="text-blue-500">
-          register a new account
-        </a>
-      </span>
+
+      <div class="text-sm text-blue-500" @click="handleSignInSignInSignUp">
+        {{
+          signIn ? 'register a new account' : 'already have account, Login now'
+        }}
+      </div>
     </div>
     <div class="flex justify-center my-2 mx-4 md:mx-0">
       <form
@@ -79,10 +79,10 @@
             <button
               class="appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500"
             >
-              Sign in
+              {{ signIn ? 'Sign In' : 'Sign Up ' }}
             </button>
           </div>
-          <div class="mx-auto -mb-6 pb-1">
+          <!-- <div class="mx-auto -mb-6 pb-1">
             <span class="text-center text-xs text-gray-700"
               >or sign up with</span
             >
@@ -134,7 +134,7 @@
                 </svg>
               </button>
             </div>
-          </div>
+          </div> -->
         </div>
       </form>
     </div>
@@ -142,12 +142,12 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { firebaseAUTH } from '../../services/axiosInstance'
-import { signUp } from '../../services/auth'
+
 export default {
   data() {
     return {
+      signIn: false,
       credential: {
         email: '',
         password: '',
@@ -156,23 +156,34 @@ export default {
     }
   },
   methods: {
+    handleSignInSignInSignUp() {
+      this.signIn = !this.signIn
+      this.credential = {
+        email: '',
+        password: '',
+        returnSecureToken: true
+      }
+    },
     onSubmit() {
       let apiKey = process.env.fbApiKEY
-      const register = firebaseAUTH.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`,
-        {
+      if (this.signIn) {
+        const signIn = firebaseAUTH.post(
+          `/accounts:signInWithPassword?key=${apiKey}`,
+          {
+            email: this.credential.email,
+            password: this.credential.password,
+            returnSecureToken: true
+          }
+        )
+        return signIn
+      } else {
+        const register = firebaseAUTH.post(`/accounts:signUp?key=${apiKey}`, {
           email: this.credential.email,
           password: this.credential.password,
           returnSecureToken: true
-        }
-      )
-      console.log(signUp)
-      // .then(response => {
-      //   console.log(response.data)
-      // })
-      // .catch(e => console.log(e))
-      // )
-      return register
+        })
+        return register
+      }
     }
   }
 }
