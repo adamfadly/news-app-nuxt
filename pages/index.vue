@@ -14,6 +14,7 @@ import Card from '../components/News/Card.vue'
 export default {
   components: { Card },
 
+  methods: {},
   computed: {
     articles() {
       return this.$store.state.news

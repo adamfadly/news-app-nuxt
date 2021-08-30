@@ -7,6 +7,7 @@
 <script>
 import AdminMain from '../../components/views/admin/AdminMain.vue'
 import axios from 'axios'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -18,14 +19,18 @@ export default {
       news: {}
     }
   },
+  computed: {
+    ...mapState({ token: 'token' })
+  },
   methods: {
+    ...mapMutations(['addNewPost']),
     submitPost(postData) {
       axios
         .post(
-          'https://news-app-nuxt-80b8e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json',
+          `https://news-app-nuxt-80b8e-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json?auth=${this.token}`,
           postData
         )
-        .then(this.$router.push('/'))
+        .then(this.addNewPost(postData), this.$router.push('/'))
         .catch(error => console.log(error))
     }
   }
