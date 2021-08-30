@@ -2,12 +2,13 @@ import vuex from 'vuex'
 
 const createStore = () => {
   return new vuex.Store({
-    namespaced: true,
+    // namespaced: true,
 
     state: {
       news: [],
       token: null
     },
+
     mutations: {
       SET_POST(state, news) {
         state.news = news
@@ -19,7 +20,13 @@ const createStore = () => {
         state.token = token
       }
     },
-    getters: {},
+
+    getters: {
+      isAuntheticated(state) {
+        return state.token != null
+      }
+    },
+
     actions: {
       async nuxtServerInit({ commit }, { $axios }) {
         let news = await $axios.$get('/posts.json')
@@ -30,6 +37,7 @@ const createStore = () => {
         }
         return posts
       },
+
       async getContent({ dispatch }) {
         await dispatch(nuxtServerInit)
       }

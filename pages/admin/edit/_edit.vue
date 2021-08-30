@@ -9,6 +9,7 @@ import axios from 'axios'
 import EditArticle from '../../../components/views/admin/EditArticle/EditArticle.vue'
 
 export default {
+  middleware: 'auth',
   components: {
     EditArticle
   },
