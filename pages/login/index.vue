@@ -143,6 +143,7 @@
 
 <script>
 import { firebaseAUTH } from '../../services/axiosInstance'
+import { mapMutations } from 'vuex'
 
 export default {
   data() {
@@ -156,6 +157,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['setToken']),
     handleSignInSignInSignUp() {
       this.signIn = !this.signIn
       this.credential = {
@@ -164,10 +166,10 @@ export default {
         returnSecureToken: true
       }
     },
-    onSubmit() {
+    async onSubmit() {
       let apiKey = process.env.fbApiKEY
       if (this.signIn) {
-        const signIn = firebaseAUTH.post(
+        const signIn = await firebaseAUTH.post(
           `/accounts:signInWithPassword?key=${apiKey}`,
           {
             email: this.credential.email,
@@ -175,13 +177,24 @@ export default {
             returnSecureToken: true
           }
         )
+        let token = signIn.data.idToken
+        this.setToken(token)
+        this.$router.push('/')
+        console.log(token, 'ini masuk signin')
         return signIn
       } else {
-        const register = firebaseAUTH.post(`/accounts:signUp?key=${apiKey}`, {
-          email: this.credential.email,
-          password: this.credential.password,
-          returnSecureToken: true
-        })
+        const register = await firebaseAUTH.post(
+          `/accounts:signUp?key=${apiKey}`,
+          {
+            email: this.credential.email,
+            password: this.credential.password,
+            returnSecureToken: true
+          }
+        )
+        let token = register.data.idToken
+        this.setToken(token)
+        this.$router.push('/')
+        console.log(register.data, 'ini masuk register')
         return register
       }
     }
